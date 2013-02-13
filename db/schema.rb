@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130213110736) do
+ActiveRecord::Schema.define(:version => 20130213114120) do
 
   create_table "incidents", :force => true do |t|
     t.string   "info"
-    t.integer  "type",       :limit => 1
-    t.integer  "score",                   :default => 5
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.integer  "incident_type", :limit => 1
+    t.integer  "score",                      :default => 5
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "incidents_tags", :id => false, :force => true do |t|
