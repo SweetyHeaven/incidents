@@ -16,8 +16,12 @@
     <%= f.text_field :info %>
   </div>
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.number_field :type %>
+    <%= f.label :incident_type %><br />
+    <%= f.radio_button(:incident_type, 1) %>
+    <%= f.label(:incident_type_positive, "positive") %>
+    <%= f.radio_button(:incident_type, -1) %>
+    <%= f.label(:incident_type_negative, "negative") %>
+    
   </div>
   <div class="field">
     <%= f.label :score %><br />
