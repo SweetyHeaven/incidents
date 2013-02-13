@@ -1,4 +1,7 @@
 Appraisal::Application.routes.draw do
+  resources :incidents
+
+
   resources :tags
 
 

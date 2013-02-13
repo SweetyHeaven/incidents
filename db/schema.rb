@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212145819) do
+ActiveRecord::Schema.define(:version => 20130213110736) do
+
+  create_table "incidents", :force => true do |t|
+    t.string   "info"
+    t.integer  "type",       :limit => 1
+    t.integer  "score",                   :default => 5
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  create_table "incidents_tags", :id => false, :force => true do |t|
+    t.integer "incident_id"
+    t.integer "tag_id"
+  end
+
+  add_index "incidents_tags", ["incident_id", "tag_id"], :name => "index_incidents_tags_on_incident_id_and_tag_id"
+  add_index "incidents_tags", ["tag_id", "incident_id"], :name => "index_incidents_tags_on_tag_id_and_incident_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",         :null => false
