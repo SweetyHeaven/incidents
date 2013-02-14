@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
   #user profile image
   attr_accessible :avatar								   
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "30x30>" }
+
+  #user incidents
+  has_many :created_incidents, :foreign_key => 'creator_id', :class_name => 'Incident'
+  has_many :assigned_incidents , :foreign_key => 'assigned_to_id', :class_name => 'Incident'
  
 def name
   "#{self.first_name} #{self.last_name}"

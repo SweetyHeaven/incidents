@@ -25,7 +25,10 @@ class IncidentsController < ApplicationController
   # GET /incidents/new
   # GET /incidents/new.json
   def new
-    @incident = Incident.new(:incident_type => 1)
+    @incident = Incident.new(:incident_type => 1, :creator_id => current_user.id)
+
+    #retreive all users to be assigned to that incident
+    @users = User.all.map {|user| [user.name, user.id]}
 
     #retreive all tags to be shown in the input form
     @tags = Tag.all.map { |tag| [tag.name, tag.id] }
@@ -38,8 +41,13 @@ class IncidentsController < ApplicationController
 
   # GET /incidents/1/edit
   def edit
-    @incident = Incident.find(params[:id])
+    @incident = Incident.find(params[:id]) 
     
+    #retreive all users to be assigned to that incident
+    @users = User.all.map {|user| [user.name, user.id]}
+
+    @selected_user = @incident.assigned_to.id
+
     #retreive all tags to be shown in the input form
     @tags = Tag.all.map { |tag| [tag.name, tag.id] }
 
@@ -52,8 +60,7 @@ class IncidentsController < ApplicationController
   # POST /incidents.json
   def create
     @incident = Incident.new(params[:incident])
-
-    puts params.inspect
+    @incident.creator_id = current_user.id #set incident creator
 
     respond_to do |format|
       if @incident.save
