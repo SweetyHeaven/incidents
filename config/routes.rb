@@ -1,19 +1,32 @@
 Appraisal::Application.routes.draw do
-  resources :incidents do 
-    resources :tags
-  end
+  
+  # match "/users/:user_id/incidents/assigned" => "incidents#showAssigned", as: :assigned_incident 
+  # match "/users/:user_id/incidents/created" => "incidents#showCreated", as: :created_incident
 
+  resources :incidents 
 
-  resources :tags do 
-    resources :incidents
-  end
-
+  resources :tags   
 
   devise_for :users
+
+  resources :users do
+    member do
+      resources :incidents do
+        collection do
+          get :assigned 
+          get :created
+        end
+      end
+    end
+
+  end
 
   get "home/index"
 
    root :to => "home#index"
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

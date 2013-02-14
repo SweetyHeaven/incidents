@@ -2,22 +2,26 @@
 
 <table>
   <tr>
-    <th>Info</th>
+    <th>Date</th>
+    <th>Assigned to</th>
+    <th>Information</th>
     <th>Type</th>
     <th>Score</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @incidents.each do |incident| %>
-  <tr>
+  <tr class = <%=incident.type%> >
+    <td><%= incident.created_at %></td>
+    <td><%= link_to incident.assigned_to.name ,assigned_incident_path(incident.assigned_to.id) %></td>
     <td><%= incident.info %></td>
     <td><%= incident.type %></td>
     <td><%= incident.score %></td>
-    <td><%= link_to 'Show', incident %></td>
-    <td><%= link_to 'Edit', edit_incident_path(incident) %></td>
-    <td><%= link_to 'Destroy', incident, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if edit_enabled == true%>
+      <td><%= button_to "Edit", edit_incident_path(incident) , :method => :get %></td>
+      <td><%= button_to 'Undo', incident, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <%end%>
   </tr>
 <% end %>
 </table>

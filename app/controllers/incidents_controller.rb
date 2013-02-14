@@ -1,11 +1,14 @@
 class IncidentsController < ApplicationController
+  
+  before_filter :authenticate_user!
+  
   # GET /incidents
   # GET /incidents.json
   def index
     @incidents = Incident.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html{render :index, :locals => {:edit_enabled => false}} # index.html.erb
       format.json { render json: @incidents }
     end
   end
@@ -20,6 +23,34 @@ class IncidentsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @incident }
     end
+  end
+
+  # GET /users/:userId/incidents/assigned
+  # GET /users/:userId/incidents/assigned.json
+  #showing assigned incidents for a given user
+  def assigned
+    @user = User.find(params[:id])
+    @incidents = @user.assigned_incidents
+
+    respond_to do |format|
+      format.html{render :index , :locals => {:edit_enabled => false}}
+      format.json { render json: @incidents }
+    end
+
+  end
+
+  # GET /users/:userId/incidents/assigned
+  # GET /users/:userId/incidents/assigned.json
+  #showing created incidents for a given user
+  def created
+    @user = User.find(params[:id])
+    @incidents = @user.created_incidents
+
+    respond_to do |format|
+      format.html{render :index, :locals => {:edit_enabled => true}}
+      format.json { render json: @incidents }
+    end
+
   end
 
   # GET /incidents/new
