@@ -11,3 +11,9 @@ $(document).ready(function(){
     	}
   });
 });
+
+$(document).ready(function(){ 
+  $(".chzn-select").chosen().change(function(){
+    
+  });
+});
