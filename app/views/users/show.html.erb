@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @user.avatar.url(:medium) %>
+<h1><%=@user.name%></h1> </br>
+<h2><b>Score:</b> <%= @user.score %> </h2>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+
+<%= button_to "Assigned Incident" ,assigned_incident_path(@user.id),:method => :get %>
+<%= button_to "Created Incidents" ,created_incident_path(@user.id),:method => :get %>
+<%= link_to 'Back', incidents_path %>
+
