@@ -12,7 +12,7 @@
 
 <p>
   <b>Assigned to: </b>
-  <%= link_to @incident.creator.name ,user_path(@incident.assigned_to) %>
+  <%= link_to @incident.assigned_to.name ,user_path(@incident.assigned_to) %>
 </p>
 
 <p>
