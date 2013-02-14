@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Date</th>
+    <th>Created by</th>
     <th>Assigned to</th>
     <th>Information</th>
     <th>Type</th>
@@ -14,7 +15,8 @@
 <% @incidents.each do |incident| %>
   <tr class = <%=incident.type%> >
     <td><%= incident.created_at %></td>
-    <td><%= link_to incident.assigned_to.name ,assigned_incident_path(incident.assigned_to.id) %></td>
+    <td><%= link_to incident.creator.name ,user_path(incident.creator) %></td>
+    <td><%= link_to incident.assigned_to.name ,user_path(incident.assigned_to) %></td>
     <td><%= incident.info %></td>
     <td><%= incident.type %></td>
     <td><%= incident.score %></td>

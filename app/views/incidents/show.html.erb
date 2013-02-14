@@ -1,11 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Info:</b>
+  <b>Date: </b>
+  <%= @incident.created_at %>
+</p>
+
+<p>
+  <b>Creator: </b>
+  <%= link_to @incident.creator.name ,user_path(@incident.creator) %>
+</p>
+
+<p>
+  <b>Assigned to: </b>
+  <%= link_to @incident.creator.name ,user_path(@incident.assigned_to) %>
+</p>
+
+<p>
+  <b>Information: </b>
   <%= @incident.info %>
 </p>
 
 <p>
+
   <b>Type:</b>
   <%= @incident.incident_type %>
 </p>
@@ -13,6 +29,13 @@
 <p>
   <b>Score:</b>
   <%= @incident.score %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <% @incident.tags.each do |tag| %>
+  	<%= link_to tag.name , { :controller => 'incidents', :action => 'index' },:class => 'button' %>
+  <% end %>
 </p>
 
 
