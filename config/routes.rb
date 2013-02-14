@@ -1,8 +1,12 @@
 Appraisal::Application.routes.draw do
-  resources :incidents
+  resources :incidents do 
+    resources :tags
+  end
 
 
-  resources :tags
+  resources :tags do 
+    resources :incidents
+  end
 
 
   devise_for :users

@@ -14,6 +14,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/1.json
   def show
     @incident = Incident.find(params[:id])
+    @tags = @incident.tags.map { |tag| [tag.name, tag.id] }
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +27,9 @@ class IncidentsController < ApplicationController
   def new
     @incident = Incident.new(:incident_type => 1)
 
+    #retreive all tags to be shown in the input form
+    @tags = Tag.all.map { |tag| [tag.name, tag.id] }
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @incident }
@@ -35,12 +39,21 @@ class IncidentsController < ApplicationController
   # GET /incidents/1/edit
   def edit
     @incident = Incident.find(params[:id])
+    
+    #retreive all tags to be shown in the input form
+    @tags = Tag.all.map { |tag| [tag.name, tag.id] }
+
+    #retreive the previously selected tags
+    @selected_tags = @incident.tag_ids
+
   end
 
   # POST /incidents
   # POST /incidents.json
   def create
     @incident = Incident.new(params[:incident])
+
+    puts params.inspect
 
     respond_to do |format|
       if @incident.save

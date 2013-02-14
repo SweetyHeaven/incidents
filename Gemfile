@@ -31,6 +31,9 @@ gem 'devise'
 #for image uploading and resizing
 gem "paperclip", "~> 3.0"
 
+#for tagging
+gem 'chosen-rails'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
