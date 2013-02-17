@@ -29,6 +29,7 @@ class TagsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @tag }
+      format.js{render json: @tag}
     end
   end
 
@@ -44,8 +45,9 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
+        #format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
         format.json { render json: @tag, status: :created, location: @tag }
+        format.js {render json: @tag}
       else
         format.html { render action: "new" }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
