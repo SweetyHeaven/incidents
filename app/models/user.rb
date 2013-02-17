@@ -29,4 +29,14 @@ def name
   "#{self.first_name} #{self.last_name}"
 end
 
+#check if user has manager privilage
+def isManager?
+  if self.role == "Manager"
+    return true
+  else
+    return false
+  end
+end
+
+
 end

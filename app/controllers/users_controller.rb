@@ -1,5 +1,15 @@
 class UsersController < ApplicationController
   
+   before_filter :authenticate_user!   
+   before_filter :authenticate_manager, :only => [:index]
+
+   def authenticate_manager
+    if !current_user.isManager?
+      redirect_to :action => :show, :id => current_user.id
+    end
+   end
+
+
   # GET /users
   # GET /users.json
   def index

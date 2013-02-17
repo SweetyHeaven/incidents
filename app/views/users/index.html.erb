@@ -1,23 +1,37 @@
+
+<%= content_for :stylesheet_includes do %>
+  <%= stylesheet_link_tag 'jquery.dataTables.css' %>
+<% end %>
+
+<%= content_for :javascript_includes do %>
+  <%= javascript_include_tag "users.js" %>
+<% end %>
+
+
 <h1>Users</h1>
 
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Role</th>
-    <th>Score</th>
-    <th></th>
-  </tr>
+<table id = "usersTable">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Score</th>
+      <th></th>
+    </tr>
+  </thead>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.id %></td>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.role %></td>
-    <td><%= user.score %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= link_to user.name , user_path(user)  %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <td><%= user.score %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  <tbody>
 </table>

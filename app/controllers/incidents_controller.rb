@@ -1,11 +1,24 @@
 class IncidentsController < ApplicationController
   
   before_filter :authenticate_user!
+  before_filter :load_incidents, :only => [:index]
   
+
+  #This method checks logged in user role
+  #if user role = Employee => only positive incidents are load
+  #if user role = Manager =>  all incidents are load
+  def load_incidents
+    if current_user.isManager?  #load everything
+      @incidents = Incident.all
+    else     #load only positive incidents
+      @incidents = Incident.where("incident_type = ?",1)
+    end
+  end
+
   # GET /incidents
   # GET /incidents.json
   def index
-    @incidents = Incident.all
+    #@incidents = Incident.all
 
     respond_to do |format|
       format.html{render :index, :locals => {:edit_enabled => false}} # index.html.erb
@@ -30,7 +43,7 @@ class IncidentsController < ApplicationController
   #showing assigned incidents for a given user
   def assigned
     @user = User.find(params[:id])
-    @incidents = @user.assigned_incidents
+    @incidents = @user.assigned_incidents.where("incident_type = ?",1)
 
     respond_to do |format|
       format.html{render :index , :locals => {:edit_enabled => false}}
@@ -44,12 +57,23 @@ class IncidentsController < ApplicationController
   #showing created incidents for a given user
   def created
     @user = User.find(params[:id])
-    @incidents = @user.created_incidents
 
-    respond_to do |format|
-      format.html{render :index, :locals => {:edit_enabled => true}}
-      format.json { render json: @incidents }
+    #check if request came from the creator itself
+    if @user.id == current_user.id
+        @incidents = @user.created_incidents
+        respond_to do |format|
+          format.html{render :index, :locals => {:edit_enabled => true}}
+          format.json { render json: @incidents }
+        end
+    else
+        @incidents = @user.created_incidents.where("incident_type = ?",1)
+        respond_to do |format|
+          format.html{render :index, :locals => {:edit_enabled => false}}
+          format.json { render json: @incidents }
+        end
     end
+
+    
 
   end
 
@@ -97,6 +121,11 @@ class IncidentsController < ApplicationController
       if @incident.save
         format.html { redirect_to @incident, notice: 'Incident was successfully created.' }
         format.json { render json: @incident, status: :created, location: @incident }
+
+        #add incident's score to assigned user's score
+        @assigned_user = @incident.assigned_to
+        @assigned_user.score += @incident.score
+        @assigned_user.save
       else
         format.html { render action: "new" }
         format.json { render json: @incident.errors, status: :unprocessable_entity }
@@ -124,6 +153,12 @@ class IncidentsController < ApplicationController
   # DELETE /incidents/1.json
   def destroy
     @incident = Incident.find(params[:id])
+
+    #remove incident's score from assigned user's score
+    @assigned_user = @incident.assigned_to
+    @assigned_user.score -= @incident.score
+    @assigned_user.save
+
     @incident.destroy
 
     respond_to do |format|
