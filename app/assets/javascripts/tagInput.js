@@ -1,6 +1,7 @@
 
 $(document).ready(function(){ 
-	$(".chzn-select").chosen();
+	$(".user-select").chosen();
+  $(".chzn-select").chosen();
   $(".chzn-select").chosen().change(function(){
     console.log("found");
   });

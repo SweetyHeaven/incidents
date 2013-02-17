@@ -17,7 +17,7 @@
 
  <div class="field">
     <%= f.label :assigned_to %><br />
-    <%= f.select(:assigned_to_id, options_for_select(@users,:selected => @selected_user ),{}, { :class => "chzn-select", "data-placeholder" =>"Choose a User"} ) %>
+    <%= f.select(:assigned_to_id, options_for_select(@users,:selected => @selected_user ),{}, { :class => "user-select", "data-placeholder" =>"Choose a User"} ) %>
   </div>
 
   <div class="field">

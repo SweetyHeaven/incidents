@@ -59,7 +59,7 @@ class IncidentsController < ApplicationController
     @incident = Incident.new(:incident_type => 1, :creator_id => current_user.id)
 
     #retreive all users to be assigned to that incident
-    @users = User.all.map {|user| [user.name, user.id]}
+    @users = User.where("id != ?", current_user.id).map {|user| [user.name, user.id]}
 
     #retreive all tags to be shown in the input form
     @tags = Tag.all.map { |tag| [tag.name, tag.id] }

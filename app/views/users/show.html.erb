@@ -10,7 +10,7 @@
 </p>
 
 
-<%= button_to "Assigned Incident" ,assigned_incident_path(@user.id),:method => :get %>
-<%= button_to "Created Incidents" ,created_incident_path(@user.id),:method => :get %>
+<%= button_to "Assigned Incident" ,assigned_incidents_path(@user.id),:method => :get %>
+<%= button_to "Created Incidents" ,created_incidents_path(@user.id),:method => :get %>
 <%= link_to 'Back', incidents_path %>
 
