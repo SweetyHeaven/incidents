@@ -34,6 +34,13 @@ table.dataTable td.dataTables_empty {
 table.dataTable tr.odd { background-color: #E2E4FF; }
 table.dataTable tr.even { background-color: white; }
 
+table.dataTable tr.negative{
+	background-color: red;
+	opacity: 0.65;
+}
+
+
+
 table.dataTable tr.odd td.sorting_1 { background-color: #D3D6FF; }
 table.dataTable tr.odd td.sorting_2 { background-color: #DADCFF; }
 table.dataTable tr.odd td.sorting_3 { background-color: #E0E2FF; }
@@ -41,6 +48,18 @@ table.dataTable tr.even td.sorting_1 { background-color: #EAEBFF; }
 table.dataTable tr.even td.sorting_2 { background-color: #F2F3FF; }
 table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
 
+table.dataTable tr.negative td.sorting_1{
+	background-color: red;
+	opacity: 0.65;
+}
+table.dataTable tr.negative td.sorting_2{
+	background-color: red;
+	opacity: 0.65;
+}
+table.dataTable tr.negative td.sorting_3{
+	background-color: red;
+	opacity: 0.65;
+}
 
 /*
  * Table wrapper

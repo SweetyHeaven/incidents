@@ -17,6 +17,7 @@
       <th>Information</th>
       <th>Type</th>
       <th>Score</th>
+      <th></th>
       <% if edit_enabled == true%>
         <th></th>
         <th></th>
@@ -30,9 +31,10 @@
         <td><%= incident.created_at %></td>
         <td><%= link_to incident.creator.name ,user_path(incident.creator) %></td>
         <td><%= link_to incident.assigned_to.name ,user_path(incident.assigned_to) %></td>
-        <td><%= incident.info %></td>
+        <td><%= incident.info[0..20] %>...</td>
         <td><%= incident.type %></td>
         <td><%= incident.score %></td>
+        <td><%= button_to "Show",incident_path(incident) , :method => :get%></td>
         <% if edit_enabled == true%>
           <td><%= button_to "Edit", edit_incident_path(incident) , :method => :get %></td>
           <td><%= button_to 'Undo', incident, method: :delete, data: { confirm: 'Are you sure?' } %></td>
