@@ -10,6 +10,8 @@
 
 <h1>Users</h1>
 
+<%= render 'form' %>
+
 <table id = "usersTable">
   <thead>
     <tr>
@@ -29,7 +31,7 @@
         <td><%= link_to user.name , user_path(user)  %></td>
         <td><%= user.email %></td>
         <td><%= user.role %></td>
-        <td><%= user.score %></td>
+        <td><%= user.incidents_score %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

@@ -1,0 +1,16 @@
+<%= form_tag('/users/report', :method => :get ) do  %>
+	
+	<div class="fromField">
+    	<%= label_tag :from %><br />
+    	<%= select_date(date = Date.current,:prefix => 'from') %> 
+  	</div>
+
+  	<div class="toField">
+    	<%= label_tag :to %><br />
+    	<%= select_date(date = Date.current,:prefix => 'to') %>
+  	</div>
+
+	<div class="filterAction">
+    	<%= submit_tag "Apply" %>
+ 	</div>
+<% end %>

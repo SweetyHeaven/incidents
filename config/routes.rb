@@ -18,6 +18,9 @@ Appraisal::Application.routes.draw do
         end
       end
     end
+    collection do
+      get :report
+    end
 
   end
 

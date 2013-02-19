@@ -15,17 +15,16 @@
   <%= link_to @incident.assigned_to.name ,user_path(@incident.assigned_to) %>
 </p>
 
-<p>
+
   <b>Information: </b>
   <div id = "infoField">
     <%= @incident.info %>
   </div>
-</p>
 
 <p>
 
   <b>Type:</b>
-  <%= @incident.incident_type %>
+  <%= @incident.type %>
 </p>
 
 <p>

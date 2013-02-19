@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #navbar{
+	width: 100%;
+	background-color: rgba(0, 113, 255, 0.28);
+	height: 24px;
+}
+
+#userData{
 	float:right;
 }
 

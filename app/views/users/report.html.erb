@@ -1,0 +1,19 @@
+<h1> Users Report </h1>
+
+<%= form_for(@users) do |f| %>
+	
+	<div class="field">
+    	<%= f.label :from %><br />
+    	<%= f.date_field :from %> 
+  	</div>
+
+  	<div class="field">
+    	<%= f.label :to %><br />
+    	<%= f.date_field :to %> 
+  	</div>
+
+	<div class="actions">
+    	<%= f.submit %>
+ 	</div>
+<% end %>
+<%= render 'index' %>

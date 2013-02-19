@@ -38,5 +38,21 @@ def isManager?
   end
 end
 
-
+#calculate score given to user from incidents
+#in a given time interval
+#if default value is used for interval score field is returned
+def incidents_score(time_interval = "")
+  if time_interval == ""
+    return score
+  end 
+  calculated_score = 0
+  self.score = 0
+  self.assigned_incidents.where("created_at" => time_interval).each do |incident|
+    calculated_score += incident.score
+    self.score += incident.score
+  end
+  puts "#{self.id}  #{calculated_score}"
+  return calculated_score
+end
+  
 end

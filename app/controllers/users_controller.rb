@@ -31,4 +31,27 @@ class UsersController < ApplicationController
       format.json { render json: @incident }
     end
   end
+
+  def report
+    puts params
+
+    startingDate = params["from"]
+    startingDate = Date.new(startingDate[:year].to_i,startingDate[:month].to_i,startingDate[:day].to_i)
+    endingDate = params["to"]
+    endingDate = Date.new(endingDate[:year].to_i,endingDate[:month].to_i,endingDate[:day].to_i)
+
+    #optimize DB queries
+    User.includes(:assigned_incidents)
+
+    #sort all users by incident_score(retreived value)
+    time_interval = startingDate...endingDate
+
+    @users = User.all.sort_by{|user| user.incidents_score(time_interval)}.reverse
+    
+    respond_to do |format|
+      format.html {render :index , :locals => {:time_interval => time_interval}}
+      format.json { render json: @users }
+    end    
+  end
+
 end
