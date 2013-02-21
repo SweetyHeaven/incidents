@@ -114,8 +114,11 @@ class IncidentsController < ApplicationController
   # POST /incidents
   # POST /incidents.json
   def create
+    #parse tag_ids
+    params[:incident][:tag_ids] = params[:incident][:tag_ids].split(",");
     @incident = Incident.new(params[:incident])
     @incident.creator_id = current_user.id #set incident creator
+    @incident.score = @incident.incident_type * 5;
 
     respond_to do |format|
       if @incident.save
@@ -126,6 +129,19 @@ class IncidentsController < ApplicationController
         @assigned_user = @incident.assigned_to
         @assigned_user.score += @incident.score
         @assigned_user.save
+
+        #send a notification mail to assigned user incase of +ve incidents
+        if @incident.type == "positive"
+          UserMailer.delay.incident_notification(@incident) 
+          
+          #send broadcast message for all users
+          UserMailer.delay.incident_broadcast(@incident)
+
+        else #negative incident
+          UserMailer.delay.negative_incident_notification(@incident)
+        end    
+
+      
       else
         format.html { render action: "new" }
         format.json { render json: @incident.errors, status: :unprocessable_entity }

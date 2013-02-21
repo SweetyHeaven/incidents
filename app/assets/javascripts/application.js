@@ -14,3 +14,4 @@
 //= require jquery_ujs 
 //= require chosen-jquery
 //= require jquery.dataTables
+//= require jquery.tokeninput

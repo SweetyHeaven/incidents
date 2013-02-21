@@ -15,8 +15,16 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
 
+    #check user privilage
+    if current_user.role == "Manager"
+      @incidents = @tag.incidents  
+    else  #role = Employee
+      @incidents = @tag.incidents.where("incident_type = ?",1)
+    end
+    
+
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {render "incidents/index"}
       format.json { render json: @tag }
     end
   end
@@ -80,6 +88,19 @@ class TagsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tags_url }
       format.json { head :no_content }
+    end
+  end
+
+
+  # returns a list of tags that contains the query
+  # GET /tags/search/name
+  def search
+    query = params[:q]
+    @tags = Tag.find(:all, :conditions => ['lower(name) LIKE ?', "%#{query.downcase}%"])
+    @foundResults = @tags.map{|tag| {"id" => tag.id ,"name" => tag.name}}
+
+    respond_to do |format|
+      format.js { render json: @foundResults }
     end
   end
 end

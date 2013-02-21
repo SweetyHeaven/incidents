@@ -34,6 +34,9 @@ gem "paperclip", "~> 3.0"
 #for tagging
 gem 'chosen-rails'
 
+#for background jobs
+gem 'delayed_job_active_record'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>Hi sir, </h3>
+    <p>
+     <%=link_to @incident.creator.name , user_url(@incident.creator) %> added a negative incident about <%=link_to @incident.assigned_to.name , user_url(@incident.assigned_to) %>
+    </p>
+
+    <p>
+      To view the incident, just follow this link: <%= @url %>.
+    </p>
+  </body>
+</html>

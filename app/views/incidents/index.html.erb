@@ -6,6 +6,12 @@
   <%= javascript_include_tag "incidents.js" %>
 <% end %>
 
+<!--check if edit_enabled local variable is set or not -->
+<%if defined?(edit_enabled)== nil
+  edit_enabled = false
+  end 
+%>
+
 <h1>incidents</h1>
 
 <table id = "incidentsTable">

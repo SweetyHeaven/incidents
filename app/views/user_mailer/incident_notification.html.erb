@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>Hi, <%= @user.name %></h3>
+    <p>
+     Congratulations...<%=link_to @incident.creator.name , user_url(@incident.creator) %> added a new incident about you
+    </p>
+
+    <p>
+      To view the incident, just follow this link: <%= @url %>.
+    </p>
+  </body>
+</html>

@@ -35,7 +35,7 @@
 <p>
   <b>Tags:</b>
   <% @incident.tags.each do |tag| %>
-  	<%= link_to tag.name , { :controller => 'incidents', :action => 'index' },:class => 'button' %>
+  	<%= link_to tag.name , tag_path(tag),:class => 'button' %>
   <% end %>
 </p>
 

@@ -5,7 +5,11 @@ Appraisal::Application.routes.draw do
 
   resources :incidents 
 
-  resources :tags   
+  resources :tags do
+    collection do
+      get :search
+    end
+  end
 
   devise_for :users
 
@@ -23,6 +27,8 @@ Appraisal::Application.routes.draw do
     end
 
   end
+
+
 
   get "home/index"
 
