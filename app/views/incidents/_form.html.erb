@@ -3,7 +3,6 @@
 <% end %>
 
 
-
 <%= content_for :javascript_includes do %>
   <%= javascript_include_tag "tagInput.js" %>
 <% end %>
@@ -41,7 +40,7 @@
 
   <div class="field">
     <%= f.label "Tags" %><br />
-    <%= f.text_field :tag_ids %>
+    <%= f.text_field :tag_ids, "data-pre" => @selected_tags.to_json %>
   </div>
 
 

@@ -107,7 +107,7 @@ class IncidentsController < ApplicationController
     @tags = Tag.all.map { |tag| [tag.name, tag.id] }
 
     #retreive the previously selected tags
-    @selected_tags = @incident.tag_ids
+    @selected_tags = @incident.tags.map { |tag| {"id" => tag.id, "name" =>  tag.name} }
 
   end
 
