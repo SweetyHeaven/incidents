@@ -152,6 +152,9 @@ class IncidentsController < ApplicationController
   # PUT /incidents/1
   # PUT /incidents/1.json
   def update
+    #parse tag_ids
+    params[:incident][:tag_ids] = params[:incident][:tag_ids].split(",");
+
     @incident = Incident.find(params[:id])
 
     respond_to do |format|
