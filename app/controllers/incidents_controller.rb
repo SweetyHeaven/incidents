@@ -125,11 +125,6 @@ class IncidentsController < ApplicationController
         format.html { redirect_to @incident, notice: 'Incident was successfully created.' }
         format.json { render json: @incident, status: :created, location: @incident }
 
-        #add incident's score to assigned user's score
-        @assigned_user = @incident.assigned_to
-        @assigned_user.score += @incident.score
-        @assigned_user.save
-
         #send a notification mail to assigned user incase of +ve incidents
         if @incident.type == "positive"
           UserMailer.delay.incident_notification(@incident) 
@@ -172,11 +167,6 @@ class IncidentsController < ApplicationController
   # DELETE /incidents/1.json
   def destroy
     @incident = Incident.find(params[:id])
-
-    #remove incident's score from assigned user's score
-    @assigned_user = @incident.assigned_to
-    @assigned_user.score -= @incident.score
-    @assigned_user.save
 
     @incident.destroy
 

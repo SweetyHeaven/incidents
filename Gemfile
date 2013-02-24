@@ -37,6 +37,13 @@ gem 'chosen-rails'
 #for background jobs
 gem 'delayed_job_active_record'
 
+group :test do
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+  gem "rspec-rails"
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
