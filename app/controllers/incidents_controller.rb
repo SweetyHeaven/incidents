@@ -118,24 +118,11 @@ class IncidentsController < ApplicationController
     params[:incident][:tag_ids] = params[:incident][:tag_ids].split(",");
     @incident = Incident.new(params[:incident])
     @incident.creator_id = current_user.id #set incident creator
-    @incident.score = @incident.incident_type * 5;
 
     respond_to do |format|
       if @incident.save
         format.html { redirect_to @incident, notice: 'Incident was successfully created.' }
         format.json { render json: @incident, status: :created, location: @incident }
-
-        #send a notification mail to assigned user incase of +ve incidents
-        if @incident.type == "positive"
-          UserMailer.delay.incident_notification(@incident) 
-          
-          #send broadcast message for all users
-          UserMailer.delay.incident_broadcast(@incident)
-
-        else #negative incident
-          UserMailer.delay.negative_incident_notification(@incident)
-        end    
-
       
       else
         format.html { render action: "new" }

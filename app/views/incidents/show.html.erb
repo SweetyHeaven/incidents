@@ -1,43 +1,49 @@
+<div class = "showIncident">
 <p id="notice"><%= notice %></p>
+<table>
+  <tr>
+    <td><b>Date: </b></td>
+      <td><%= @incident.created_at %></td>
+  </tr>
 
-<p>
-  <b>Date: </b>
-  <%= @incident.created_at %>
-</p>
+  <tr>
+    <td><b>Creator: </b></td>
+    <td><%= link_to @incident.creator.name ,user_path(@incident.creator) %></td>
+  </tr>
 
-<p>
-  <b>Creator: </b>
-  <%= link_to @incident.creator.name ,user_path(@incident.creator) %>
-</p>
+  <tr>
+    <td><b>Assigned to: </b></td>
+    <td><%= link_to @incident.assigned_to.name ,user_path(@incident.assigned_to) %></td>
+  </tr>
 
-<p>
-  <b>Assigned to: </b>
-  <%= link_to @incident.assigned_to.name ,user_path(@incident.assigned_to) %>
-</p>
-
-
-  <b>Information: </b>
-  <div id = "infoField">
+  <tr>
+  <td><b>Information: </b></td>
+  
+  <td id = "infoField">
     <%= @incident.info %>
-  </div>
-
-<p>
-
-  <b>Type:</b>
-  <%= @incident.type %>
-</p>
-
-<p>
-  <b>Score:</b>
-  <%= @incident.score %>
-</p>
-
-<p>
-  <b>Tags:</b>
-  <% @incident.tags.each do |tag| %>
-  	<%= link_to tag.name , tag_path(tag),:class => 'button' %>
-  <% end %>
-</p>
+  </td>
+  </tr>
 
 
-<%= link_to 'Back', incidents_path %>
+  <tr>
+    <td><b>Type:</b></td>
+    <td><%= @incident.type %></td>
+  </tr>
+
+
+  <tr>
+    <td><b>Score:</b></td>
+    <td><%= @incident.score %></td>  
+  </tr>
+
+  <tr>
+  <td><b>Tags:</b></td>
+    <td>
+      <% @incident.tags.each do |tag| %>
+  	   <%= link_to tag.name , tag_path(tag),:class => 'button' %>
+      <% end %>
+    </td>
+  </tr>
+<tr><td><%= link_to 'Back', incidents_path %></td></tr>
+</table>
+</div>

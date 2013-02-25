@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.showIncident{
+	text-align: center;
+}
+
 .chzn-select{
 	width:350px;
 }
@@ -23,6 +27,7 @@ tbody{
 #infoField {
     width: 330px;
 	word-wrap: break-word;
+	display: inline;
 }
 
 #incident_type_field{

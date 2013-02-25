@@ -55,11 +55,27 @@ When /^user(\d+) make positive incident related to user(\d+)$/ do |user1_id, use
  @old_score = @user2.score
  #make incident
  positive_incident = Incident.create(:assigned_to_id => 2 , :creator_id => 1)
- @new_score = positive_incident.assigned_to.score
+ @user2 = positive_incident.assigned_to
+ @new_score = @user2.score
+ end
+
+ When /^user(\d+) make negative incident related to user(\d+)$/ do |user1_id, user2_id|
+ @old_score = @user2.score
+ #make incident
+ negative_incident = Incident.create(:assigned_to_id => 2 , :creator_id => 1 , :incident_type => -1)
+ @user2 = negative_incident.assigned_to
+ @new_score = @user2.score
+ puts @new_score
  end
 
 Then /^user(\d+) score should be increased by (\d+)$/ do |user2_id, score_icrease|
   #assert that 5 points have been added to user2
   @old_score += 5
+  (@old_score).should == @new_score  
+end
+
+Then /^user(\d+) score should be deacreased by (\d+)$/ do |user2_id, score_icrease|
+  #assert that 5 points have been added to user2
+  @old_score -= 5
   (@old_score).should == @new_score  
 end

@@ -3,8 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #navbar{
 	width: 100%;
-	background-color: rgba(0, 113, 255, 0.28);
+	background-color: rgba(3, 56, 92, 0.37);
 	height: 24px;
+}
+
+#navbar a{
+	color : white;
+	text-align: center;
+	vertical-align: middle;
 }
 
 #userData{

@@ -14,11 +14,12 @@ Scenario: Sign Up
 	And I press "Sign up"
 	Then I should be at incidents index 
 
-
-
-
-
-Scenario: Incident creation
+Scenario: Positive Incident Creation
     Given I have 2 users in the system
     When user1 make positive incident related to user2
     Then user2 score should be increased by 5
+
+Scenario: Negative Incident Creation
+    Given I have 2 users in the system
+    When user1 make negative incident related to user2
+    Then user2 score should be deacreased by 5
