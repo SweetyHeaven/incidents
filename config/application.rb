@@ -58,7 +58,7 @@ module Appraisal
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
     config.assets.precompile =["jquery.dataTables.css" , "token-input-facebook.css" , "tagInput.js"]
   end
 end
