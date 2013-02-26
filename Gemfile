@@ -5,8 +5,9 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
+#gem 'sqlite3'
+gem 'pg'
+#gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,6 +43,8 @@ group :test do
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem "rspec-rails"
+  gem 'simplecov', :require => false
+  gem 'email_spec'
 end
 
 # To use ActiveModel has_secure_password

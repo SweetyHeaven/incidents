@@ -1,14 +1,6 @@
 class UserMailer < ActionMailer::Base
   default from: "sweety.heaven.incident@gmail.com"
 
-
-  #sends mail notification for that incident depending on its type
-  #positive incident => broadcast to all users
-  #negative incident => broadcast to managers only
-  def send_incident(incident)
-
-  end
-
   #sends a mail to a user when a new related incident
   #is added to the system
   def incident_notification(incident)
