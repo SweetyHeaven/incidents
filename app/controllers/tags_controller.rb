@@ -15,11 +15,21 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
 
+
     #check user privilage
     if current_user.role == "Manager"
-      @incidents = @tag.incidents  
+      if params.has_key?("user_id")
+        @incidents = @tag.incidents.where("assigned_to_id = ?",params["user_id"])
+      else
+        @incidents = @tag.incidents  
+      end
     else  #role = Employee
-      @incidents = @tag.incidents.where("incident_type = ?",1)
+      if params.has_key?("user_id")
+         @incidents = @tag.incidents.where("incident_type = ? and assigned_to_id = ?",1,params["user_id"])
+      else
+         @incidents = @tag.incidents.where("incident_type = ?",1) 
+      end
+     
     end
     
 

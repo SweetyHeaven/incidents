@@ -1,37 +1,7 @@
 ---
-Sorting icons.psd: Sorting icons-452902a7a340d4a74505c14bac6a0041.psd
-Sorting icons/index.psd: Sorting icons-452902a7a340d4a74505c14bac6a0041.psd
-back_disabled.png: back_disabled-7a902951219d10f938f642f8dcfbd0b2.png
-back_disabled/index.png: back_disabled-7a902951219d10f938f642f8dcfbd0b2.png
-back_enabled.png: back_enabled-6eb9125f3bb6cbca38c2f71664f9e000.png
-back_enabled/index.png: back_enabled-6eb9125f3bb6cbca38c2f71664f9e000.png
-back_enabled_hover.png: back_enabled_hover-e11d6a4aa2aa496d78fed7bff91f0391.png
-back_enabled_hover/index.png: back_enabled_hover-e11d6a4aa2aa496d78fed7bff91f0391.png
-favicon.ico: favicon-064a3ccf3a9b166c659a0694ea6b63c8.ico
-favicon/index.ico: favicon-064a3ccf3a9b166c659a0694ea6b63c8.ico
-forward_disabled.png: forward_disabled-10ad4081bf103bebc99f20024705d8cc.png
-forward_disabled/index.png: forward_disabled-10ad4081bf103bebc99f20024705d8cc.png
-forward_enabled.png: forward_enabled-952186037fd3150a8c26c63d6821be93.png
-forward_enabled/index.png: forward_enabled-952186037fd3150a8c26c63d6821be93.png
-forward_enabled_hover.png: forward_enabled_hover-87cb64d8d30217716f02b8a3b3f8689c.png
-forward_enabled_hover/index.png: forward_enabled_hover-87cb64d8d30217716f02b8a3b3f8689c.png
-sort_asc.png: sort_asc-b440c910821de562a607440560813a58.png
-sort_asc/index.png: sort_asc-b440c910821de562a607440560813a58.png
-sort_asc_disabled.png: sort_asc_disabled-4c81c1c19c1ef728b804da6f1f4126ec.png
-sort_asc_disabled/index.png: sort_asc_disabled-4c81c1c19c1ef728b804da6f1f4126ec.png
-sort_both.png: sort_both-a1388e5946f84e0aa3b42e8e5b9590a3.png
-sort_both/index.png: sort_both-a1388e5946f84e0aa3b42e8e5b9590a3.png
-sort_desc.png: sort_desc-76c41b0b01dc2abe9a85bd390d17591a.png
-sort_desc/index.png: sort_desc-76c41b0b01dc2abe9a85bd390d17591a.png
-sort_desc_disabled.png: sort_desc_disabled-7c66b34fc55413ed9b80f2a8f53760e4.png
-sort_desc_disabled/index.png: sort_desc_disabled-7c66b34fc55413ed9b80f2a8f53760e4.png
-application.js: application-1efebc2c6b075fed9753457ed7a37030.js
-application/index.js: application-1efebc2c6b075fed9753457ed7a37030.js
-application.css: application-5621a00ec933506f68b92265c4fd88ca.css
-application/index.css: application-5621a00ec933506f68b92265c4fd88ca.css
-chosen-sprite.png: chosen-sprite-0b638291e3ab1e89592983b5810b9b79.png
-chosen-sprite/index.png: chosen-sprite-0b638291e3ab1e89592983b5810b9b79.png
-chosen-sprite@2x.png: chosen-sprite@2x-8fa0fb1eb347c8dc10a5381b22383ac6.png
-chosen-sprite@2x/index.png: chosen-sprite@2x-8fa0fb1eb347c8dc10a5381b22383ac6.png
-jquery.min.map: jquery.min-6c267bfd2b3f36e6edccb2e584934c1c.map
-jquery/index.min.map: jquery.min-6c267bfd2b3f36e6edccb2e584934c1c.map
+tagInput.js: tagInput-24041ae5f753b1233397ab901385ff7b.js
+tagInput/index.js: tagInput-24041ae5f753b1233397ab901385ff7b.js
+jquery.dataTables.css: jquery.dataTables-0ede23738c6ddc1fe4a5dece4be88560.css
+jquery/index.dataTables.css: jquery.dataTables-0ede23738c6ddc1fe4a5dece4be88560.css
+token-input-facebook.css: token-input-facebook-a5f01a12f80519f8d638dc83c33a42ce.css
+token-input-facebook/index.css: token-input-facebook-a5f01a12f80519f8d638dc83c33a42ce.css

@@ -7,9 +7,9 @@
   <b>Email:</b>
   <%= @user.email %>
 </p>
-<div class = "RelatedTags">
+<div class = "TagsContainer">
 	<% @user.related_tags.each do |tag| %>
-		<%= link_to tag.name , tag_path(tag),:class => 'button' %>		
+		<%= link_to tag.name , tag_path(tag)+"?user_id="+"#{@user.id}" ,:class => 'button' %>		
 	<% end %>
 
 </div>

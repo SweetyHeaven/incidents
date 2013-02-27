@@ -37,8 +37,8 @@
   </tr>
 
   <tr>
-  <td><b>Tags:</b></td>
-    <td>
+    <td><b>Tags:</b></td>
+    <td>  
       <% @incident.tags.each do |tag| %>
   	   <%= link_to tag.name , tag_path(tag),:class => 'button' %>
       <% end %>
